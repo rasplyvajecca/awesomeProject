@@ -1,11 +1,11 @@
 package house
 
 import (
-	"HouseTasya/HouseTasya/appliance"
-	"HouseTasya/HouseTasya/clothes"
-	"HouseTasya/HouseTasya/family"
-	"HouseTasya/HouseTasya/furniture"
-	"HouseTasya/HouseTasya/relatives"
+	"awesomeProject/awesomeProject/appliance"
+	"awesomeProject/awesomeProject/family"
+	"awesomeProject/awesomeProject/furniture"
+	"awesomeProject/awesomeProject/kids"
+	"awesomeProject/awesomeProject/pets"
 	"fmt"
 )
 
@@ -14,10 +14,10 @@ type House struct {
 	FloorsCount   int
 	Area          float64
 	FamilyInfo    []family.Family
-	RelativesInfo []relatives.Relatives
+	KidsInfo      []kids.Kids
 	FurnitureInfo []furniture.Furniture
 	ApplianceInfo []appliance.Appliance
-	ClothesInfo   []clothes.Clothes
+	PetsInfo      []pets.Pets
 }
 
 func CreateHouse() House {
@@ -26,41 +26,57 @@ func CreateHouse() House {
 		FloorsCount:   3,
 		Area:          100.55,
 		FamilyInfo:    family.AddFamilyInfo(),
-		RelativesInfo: relatives.AddRelativesInfo(),
+		KidsInfo:      kids.AddKidsInfo(),
 		FurnitureInfo: furniture.AddFurnitureInfo(),
 		ApplianceInfo: appliance.AddApplianceInfo(),
-		ClothesInfo:   clothes.AddClothesInfo(),
+		PetsInfo:      pets.AddPetsInfo(),
 	}
 }
 
-func MyHouse(house House) {
+func DisplayHouseInfo(house House) {
 	fmt.Printf("Описание дома:\n")
 	fmt.Printf("Количество комнат: %d\n", house.RoomsCount)
 	fmt.Printf("Количество этажей: %d\n", house.FloorsCount)
 	fmt.Printf("Площадь дома: %.2f кв. м\n", house.Area)
 
-	fmt.Println("Описание членов семьи:")
-	for _, newObject := range house.FamilyInfo {
-		fmt.Printf("- %s: %s\n", newObject.Member, newObject.Name)
-	}
+	displayFamilyInfo(house.FamilyInfo, "Описание членов семьи:")
+	displayKidsInfo(house.KidsInfo, "Описание родственников:")
+	displayFurnitureInfo(house.FurnitureInfo, "Описание мебели:")
+	displayApplianceInfo(house.ApplianceInfo, "Описание техники:")
+	displayPetsInfo(house.PetsInfo, "Описание одежды:")
+}
 
-	fmt.Println("Описание родственников:")
-	for _, newObject := range house.RelativesInfo {
-		fmt.Printf("- %s: %s\n", newObject.Member, newObject.Name)
+func displayFamilyInfo(familyInfo []family.Family, header string) {
+	fmt.Println(header)
+	for _, obj := range familyInfo {
+		fmt.Printf("- %s: %s\n", obj.Member, obj.Name)
 	}
+}
 
-	fmt.Println("Описание мебели:")
-	for _, newObject := range house.FurnitureInfo {
-		fmt.Printf("- %s: %.2f кв. м, %d шт.\n", newObject.Name, newObject.Size, newObject.Count)
+func displayKidsInfo(kidsInfo []kids.Kids, header string) {
+	fmt.Println(header)
+	for _, obj := range kidsInfo {
+		fmt.Printf("- %s: %s\n", obj.Member, obj.Name)
 	}
+}
 
-	fmt.Println("Описание техники:")
-	for _, newObject := range house.ApplianceInfo {
-		fmt.Printf("- %s: %s, %d шт.\n", newObject.Name, newObject.Brand, newObject.Count)
+func displayFurnitureInfo(furnitureInfo []furniture.Furniture, header string) {
+	fmt.Println(header)
+	for _, obj := range furnitureInfo {
+		fmt.Printf("- %s: %.2f кв. м, %d шт.\n", obj.Name, obj.Size, obj.Count)
 	}
+}
 
-	fmt.Println("Описание одежды:")
-	for _, newObject := range house.ClothesInfo {
-		fmt.Printf("- %s: %d, %d шт.\n", newObject.Name, newObject.Size, newObject.Count)
+func displayApplianceInfo(applianceInfo []appliance.Appliance, header string) {
+	fmt.Println(header)
+	for _, obj := range applianceInfo {
+		fmt.Printf("- %s: %s, %d шт.\n", obj.Name, obj.Brand, obj.Count)
+	}
+}
+
+func displayPetsInfo(petsInfo []pets.Pets, header string) {
+	fmt.Println(header)
+	for _, obj := range petsInfo {
+		fmt.Printf("- %s: %d, %d шт.\n", obj.Name, obj.Size, obj.Count)
 	}
 }

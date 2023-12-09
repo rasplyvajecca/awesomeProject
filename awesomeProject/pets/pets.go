@@ -1,13 +1,13 @@
-package clothes
+package pets
 
-type Clothes struct {
+type Pets struct {
 	Name  string
 	Size  int
 	Count int
 }
 
-func AddClothesInfo() []Clothes {
-	return []Clothes{
+func AddPetsInfo() []Pets {
+	return []Pets{
 		{Name: "Футболка", Size: 54, Count: 10},
 		{Name: "Толстовка", Size: 52, Count: 5},
 		{Name: "Джинсы", Size: 34, Count: 2},

@@ -8,10 +8,10 @@ type Appliance struct {
 
 func AddApplianceInfo() []Appliance {
 	return []Appliance{
-		{Name: "Посудомоечная машина", Brand: "LG", Count: 1},
-		{Name: "Стиральная машина", Brand: "Bosch", Count: 1},
-		{Name: "Холодильник", Brand: "Samsung", Count: 1},
-		{Name: "Микроволновка", Brand: "Bosch", Count: 1},
-		{Name: "Тостер", Brand: "Bosch", Count: 1},
+		{Name: "Машина", Brand: "Лада", Count: 1},
+		{Name: "Сигнализация", Brand: "Signal", Count: 1},
+		{Name: "Холодильник", Brand: "Apple", Count: 3},
+		{Name: "Микроволновка", Brand: "Bosch", Count: 2},
+		{Name: "Робот-пылесос", Brand: "Bosch", Count: 2},
 	}
 }
