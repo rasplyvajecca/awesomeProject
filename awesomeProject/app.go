@@ -1,10 +1,9 @@
 package main
 
 import (
-	"HouseTasya/HouseTasya/house"
+	"awesomeProject/awesomeProject/house"
 )
 
 func main() {
-	newHouse := house.CreateHouse()
-	house.MyHouse(newHouse)
+	house.DisplayAwesomeHouse()
 }

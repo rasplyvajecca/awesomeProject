@@ -8,10 +8,10 @@ type Kids struct {
 
 func AddKidsInfo() []Kids {
 	return []Kids{
-		{Member: "Друг Даши", Name: "Дима", Age: 21},
-		{Member: "Друг Макса", Name: "Игорь", Age: 15},
-		{Member: "Друг Макса", Name: "Максим", Age: 16},
-		{Member: "Друг Макса", Name: "Дима", Age: 21},
-		{Member: "Друг Гриши", Name: "Тима", Age: 2},
+		{Member: "Baby boy", Name: "Ivan", Age: 1},
+		{Member: "Baby girl", Name: "Dasha", Age: 5},
+		{Member: "Son", Name: "Misha", Age: 11},
+		{Member: "Daughter", Name: "Liza", Age: 11},
+		{Member: "Cousen", Name: "Maksim", Age: 23},
 	}
 }

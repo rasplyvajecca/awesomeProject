@@ -10,9 +10,7 @@ import (
 )
 
 type House struct {
-	RoomsCount    int
-	FloorsCount   int
-	Area          float64
+	Sizes         []float64
 	FamilyInfo    []family.Family
 	KidsInfo      []kids.Kids
 	FurnitureInfo []furniture.Furniture
@@ -20,11 +18,9 @@ type House struct {
 	PetsInfo      []pets.Pets
 }
 
-func CreateHouse() House {
+func CreateAwesomeHouse() House {
 	return House{
-		RoomsCount:    10,
-		FloorsCount:   3,
-		Area:          100.55,
+		Sizes:         []float64{150.0, 200.0, 100.0},
 		FamilyInfo:    family.AddFamilyInfo(),
 		KidsInfo:      kids.AddKidsInfo(),
 		FurnitureInfo: furniture.AddFurnitureInfo(),
@@ -33,50 +29,53 @@ func CreateHouse() House {
 	}
 }
 
-func DisplayHouseInfo(house House) {
-	fmt.Printf("Описание дома:\n")
-	fmt.Printf("Количество комнат: %d\n", house.RoomsCount)
-	fmt.Printf("Количество этажей: %d\n", house.FloorsCount)
-	fmt.Printf("Площадь дома: %.2f кв. м\n", house.Area)
+func DisplayAwesomeHouse() {
+	house := CreateAwesomeHouse()
 
-	displayFamilyInfo(house.FamilyInfo, "Описание членов семьи:")
-	displayKidsInfo(house.KidsInfo, "Описание родственников:")
-	displayFurnitureInfo(house.FurnitureInfo, "Описание мебели:")
-	displayApplianceInfo(house.ApplianceInfo, "Описание техники:")
-	displayPetsInfo(house.PetsInfo, "Описание одежды:")
+	fmt.Printf("\nMy awesome house:\n")
+	for _, size := range house.Sizes {
+		fmt.Printf("%.2f sq.m\n", size)
+	}
+
+	displayFamilyInfo(house.FamilyInfo, "\nFamily:")
+	displayKidsInfo(house.KidsInfo, "\nKids:")
+	displayFurnitureInfo(house.FurnitureInfo, "\nFurniture:")
+	displayApplianceInfo(house.ApplianceInfo, "\nAppliance:")
+	displayPetsInfo(house.PetsInfo, "\nPets:")
+
 }
 
 func displayFamilyInfo(familyInfo []family.Family, header string) {
 	fmt.Println(header)
 	for _, obj := range familyInfo {
-		fmt.Printf("- %s: %s\n", obj.Member, obj.Name)
+		fmt.Printf("- %s Name %s Age: %d years\n", obj.Member, obj.Name, obj.Age)
 	}
 }
 
 func displayKidsInfo(kidsInfo []kids.Kids, header string) {
 	fmt.Println(header)
 	for _, obj := range kidsInfo {
-		fmt.Printf("- %s: %s\n", obj.Member, obj.Name)
+		fmt.Printf("- %s: Name %s Age: %d years\n", obj.Member, obj.Name, obj.Age)
 	}
 }
 
 func displayFurnitureInfo(furnitureInfo []furniture.Furniture, header string) {
 	fmt.Println(header)
 	for _, obj := range furnitureInfo {
-		fmt.Printf("- %s: %.2f кв. м, %d шт.\n", obj.Name, obj.Size, obj.Count)
+		fmt.Printf("- %s Size: %0.1f m\n", obj.Name, obj.Size)
 	}
 }
 
 func displayApplianceInfo(applianceInfo []appliance.Appliance, header string) {
 	fmt.Println(header)
 	for _, obj := range applianceInfo {
-		fmt.Printf("- %s: %s, %d шт.\n", obj.Name, obj.Brand, obj.Count)
+		fmt.Printf("- %s Brand: %s, Count: %d\n", obj.Name, obj.Brand, obj.Count)
 	}
 }
 
 func displayPetsInfo(petsInfo []pets.Pets, header string) {
 	fmt.Println(header)
 	for _, obj := range petsInfo {
-		fmt.Printf("- %s: %d, %d шт.\n", obj.Name, obj.Size, obj.Count)
+		fmt.Printf("- Owner: %s Pet: %s шт.\n", obj.Owner, obj.Name)
 	}
 }
